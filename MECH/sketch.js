@@ -55,6 +55,10 @@ let t_out = 0.0;
 
 let slider;
 let inyec;
+let slider2;
+let presion;
+let slider3;
+let ensayo;
 
 let co;
 let co2;
@@ -63,72 +67,97 @@ let h_c;
 function setup() {
   createCanvas(1000, 1000);
   vel_rpm = 2000.0;
-  slider = createSlider(5,25,5,5);
+  slider = createSlider(50,100,25,25);
   slider.position(x_mot+530, y_mot-380);
   slider.style('width', '180px'); 
   inyec = slider.value();
+  
+  slider2 = createSlider(20,35,0,0);
+  slider2.position(x_mot+200, y_mot-160);
+  slider2.style('width', '100px'); 
+  presion = slider2.value();
+  
+  slider3 = createSlider(1,2,1,1);
+  slider3.position(x_mot-150, y_mot-220);
+  slider3.style('width', '180px'); 
+  ensayo = slider3.value();
+  
   //slider.attribute('disabled','');
   co = 8*pow(vel_rpm,2)/pow(10,9) - 3*vel_rpm/pow(10,5) + 0.1198;
   co2 = 4*pow(vel_rpm,2)/pow(10,8) + 0.0005*vel_rpm + 11.454;
   o2 = 2*pow(vel_rpm,2)/pow(10,7) - 0.002*vel_rpm + 7.275;
   h_c = 6*pow(vel_rpm,2)/pow(10,6) - 0.0604*vel_rpm + 186.26;
+  
+ 
 }
+
+//function ensayo1() {
+  //vel_rpm = 2000.0;
+   //presion = slider2.value();
+  //torque = -0.0559*pow(presion,2) + 1.6768*presion +125.72;
+ //} 
 
 function draw() {
 
   background(220);
+  
+  ensayo = slider3.value();
+  if(ensayo == 1){  
+  
   inyec = slider.value();
-  if(inyec == 5){
-	torque = 1*pow(vel_rpm,2)/pow(10,6) - 0.0242*vel_rpm + 112.74;
-	dp = -9*pow(vel_rpm,2)/pow(10,6) + 0.0875*vel_rpm - 41.5;
-	p4 = 2*pow(vel_rpm,2)/pow(10,6) - 0.0243*vel_rpm + 16.462;
-	t4 = 1*pow(vel_rpm,2)/pow(10,6) - 0.0104*vel_rpm + 58.98;
-	flow_d = -2*pow(vel_rpm,2)/pow(10,7) + 0.0018*vel_rpm + 0.9064;
+  if(inyec == 50){
+	
+    //if (vel_rpm==2000){
+      //presion = slider2.value();
+     //p4 = -0.0559*pow(presion,2) + 1.6768*presion +125.72;
+     // }else {
+    torque = -0.008*vel_rpm + 62.667;
+	dp = -4*pow(vel_rpm,2)/pow(10,6) + 0.096*vel_rpm - 7;
+	p4 = 2*pow(vel_rpm,2)/pow(10,7) - 0.0095*vel_rpm + 5.1375;
+	t4 = 5*pow(vel_rpm,2)/pow(10,7) + 0.00*vel_rpm + 14.425;
+	flow_d = -3600*pow(vel_rpm,2)/pow(10,10) + 0.000001*vel_rpm*3600 - 0.0006*3600;
 	co = 8*pow(vel_rpm,2)/pow(10,9) - 3*vel_rpm/pow(10,5) + 0.1198;
 	co2 = 4*pow(vel_rpm,2)/pow(10,8) + 0.0005*vel_rpm + 11.454;
 	o2 = 2*pow(vel_rpm,2)/pow(10,7) - 0.002*vel_rpm + 7.275;
-	h_c = 6*pow(vel_rpm,2)/pow(10,6) - 0.0604*vel_rpm + 186.26;
-  }else if(inyec == 10){
-	torque = 4*pow(vel_rpm,2)/pow(10,7) - 0.0196*vel_rpm + 105.74;
-	dp = -8*pow(vel_rpm,2)/pow(10,6) + 0.08*vel_rpm - 29.75;
-	p4 = 2*pow(vel_rpm,2)/pow(10,6) - 0.0209*vel_rpm + 11.293;
-	t4 = 2*pow(vel_rpm,2)/pow(10,6) - 0.0128*vel_rpm + 62.98;
-	flow_d = -3*pow(vel_rpm,2)/pow(10,8) + 0.0009*vel_rpm + 2.3099;
+	h_c = 252.62*pow(vel_rpm,0.1178);
+    //}
+        
+  }else if(inyec == 75){
+	torque = -0.0105*vel_rpm + 88.417;
+	dp = -0.057*vel_rpm + 174;
+	p4 = 3*pow(vel_rpm,2)/pow(10,6) - 0.0253*vel_rpm + 14.62;
+	t4 = -2*pow(vel_rpm,2)/pow(10,7) + 0.0023*vel_rpm + 34.8;
+	flow_d = -4*pow(vel_rpm,2)*3600/pow(10,11) + 0.0000007*3600*vel_rpm - 3600*0.0003;
 	co = 2*pow(vel_rpm,2)/pow(10,8) - 7*vel_rpm/pow(10,5) + 0.1545;
-	co2 = -4*pow(vel_rpm,2)/pow(10,8) + 0.0009*vel_rpm + 11.346;
+	co2 = -4*pow(vel_rpm,2)*3600/pow(10,8) + 0.0009*vel_rpm*3600 + 3600*11.346;
 	o2 = -9*pow(vel_rpm,2)/pow(10,8) - 0.0003*vel_rpm + 4.5184;
-	h_c = 3*pow(vel_rpm,2)/pow(10,6) - 0.0236*vel_rpm + 83.662;
-  }else if(inyec == 15){
-	torque = -8*pow(vel_rpm,2)/pow(10,7) - 0.0112*vel_rpm + 100.63;
-	dp = -1*pow(vel_rpm,2)/pow(10,5) + 0.1319*vel_rpm - 99.813;
-	p4 = 2*pow(vel_rpm,2)/pow(10,6) - 0.0224*vel_rpm + 20.866;
-	t4 = 3*pow(vel_rpm,2)/pow(10,7) - 0.0026*vel_rpm + 40.256;
-	flow_d = -3*pow(vel_rpm,2)/pow(10,7) + 0.0028*vel_rpm - 0.5033;
+	h_c = 1300*pow(vel_rpm,-0.076);
+  }else {
+ 	torque =  -3*pow(vel_rpm,2)/pow(10,6) + 0.0087*vel_rpm + 81.625;
+	dp = -0.057*vel_rpm +174;
+	p4 = 3*pow(vel_rpm,2)/pow(10,6) - 0.0253*vel_rpm + 14.62;
+	t4 = -5*pow(vel_rpm,2)/pow(10,7) + 0.0069*vel_rpm +14.425;
+	flow_d = 0.0008*log(vel_rpm)*3600-0.0051*3600;
 	co = 4*pow(vel_rpm,2)/pow(10,8) - 0.0002*vel_rpm + 0.2714;
 	co2 = 8*pow(vel_rpm,2)/pow(10,8) + 0.0001*vel_rpm + 12.537;
 	o2 = -9*pow(vel_rpm,2)/pow(10,8) - 0.0002*vel_rpm + 3.958;
-	h_c = 5*pow(vel_rpm,2)/pow(10,6) - 0.0412*vel_rpm + 113.75;
-  }else if(inyec == 20){
-	torque = 1*pow(vel_rpm,2)/pow(10,6) - 0.0231*vel_rpm + 113.39;
-	dp = -8*pow(vel_rpm,2)/pow(10,6) + 0.0871*vel_rpm - 39.988;
-	p4 = 2*pow(vel_rpm,2)/pow(10,6) - 0.0255*vel_rpm + 20.104;
-	t4 = 4*pow(vel_rpm,2)/pow(10,7) - 0.0037*vel_rpm + 43.881;
-	flow_d = -2*pow(vel_rpm,2)/pow(10,7) + 0.0019*vel_rpm + 0.8759;
-	co = 3*pow(vel_rpm,2)/pow(10,8) - 0.0001*vel_rpm + 0.161;
-	co2 = -1*pow(vel_rpm,2)/pow(10,7) + 0.0012*vel_rpm + 11.149;
-	o2 = -1*pow(vel_rpm,2)/pow(10,7) - 9*vel_rpm/pow(10,5) + 3.9341;
-	h_c = 3*pow(vel_rpm,2)/pow(10,5) - 0.1965*vel_rpm + 404.68;  
-  }else{
-	torque = 1*pow(vel_rpm,2)/pow(10,6) - 0.0214*vel_rpm + 104.44;
-	dp = -7*pow(vel_rpm,2)/pow(10,6) + 0.0793*vel_rpm - 37.475;
-	p4 = 2*pow(vel_rpm,2)/pow(10,6) - 0.025*vel_rpm + 16.724;
-	t4 = 1*pow(vel_rpm,2)/pow(10,6) - 0.0117*vel_rpm + 59.762;
-	flow_d = -2*pow(vel_rpm,2)/pow(10,7) + 0.0018*vel_rpm + 0.6631;
-	co = 2*pow(vel_rpm,2)/pow(10,8) - 6*vel_rpm/pow(10,5) + 0.1205;
-	co2 = 4*pow(vel_rpm,2)/pow(10,8) + 0.0004*vel_rpm + 12.134;
-	o2 = -3*pow(vel_rpm,2)/pow(10,7) + 0.0013*vel_rpm + 0.7555;
-	h_c = 8*pow(vel_rpm,2)/pow(10,6) - 0.0781*vel_rpm + 223.69;  
+	h_c = -1*pow(vel_rpm,2)/pow(10,5) + 0.1205*vel_rpm + 429.6;
   }
+  
+  }else{
+    presion = slider2.value();  
+    torque = -0.0559*pow(presion,2) - 1.6768*presion +125.72;
+    dp= 0.3031*pow(presion,2) - 22.245*presion + 492.59;
+    p4=-presion;
+    t4=61.946*exp(-1*0.0364*presion);
+    flow_d = 3600*0.0009*exp(-0.034*presion);
+    h_c=0.7392*pow(presion,2) - 53.128*presion + 1388.7;
+  }  
+    
+  //else {
+	//presion = slider2.value();
+    //torque = -0.0559*pow(presion,2) + 1.6768*presion +125.72;
+  
   //torque = 0.61*vel_rpm -0.0002*pow(vel_rpm,2) - 134.86;
   //dp = 0.0002*pow(vel_rpm,2) - 0.3135*vel_rpm + 297.03;
   //p2 = p1-(dp/1000);
@@ -207,7 +236,6 @@ function draw() {
     var mouseAngle_tor = atan2(dy_tor, dx_tor);
     angle_tor = mouseAngle_tor - offsetAngle_tor;
   }
-
   // Fill according to state
   if (drag_tor) {
     fill (175);
@@ -239,12 +267,29 @@ function draw() {
   //DIBUJO DEL MOTOR------------------------------------------------------------
   push();
   translate(x_mot,y_mot)
-  noFill();
+  fill('gray');
+  //noFill();
   rect(55,155,20,40);
   rect(35,135,20,80);
-  //bancada
+  
+  //bancada - carcasa
+  fill(200,180,100)
+  rect(75,20,390,300);
+  rect(85,20,370,-40);
+  rect(85,20,10,-30);
+  arc(85,-10,20,20,1.5*PI,0);
+  rect(175,20,10,-20);
+  arc(180,0,10,10,PI,0);
+  rect(265,20,10,-20);
+  arc(270,0,10,10,PI,0);
+  rect(355,20,10,-20);
+  arc(360,0,10,10,PI,0);
+  rect(445,20,10,-30);
+  arc(455,-10,20,20,PI,1.5*PI);
+  
   //primera
   var a=0;
+  
   line(85+90*a,20,85+90*a,150);
   line(85+90*a,150,75+90*a,150);
   line(75+90*a,150,75+90*a,200);
@@ -257,7 +302,7 @@ function draw() {
   line(75+90*a,160,105+90*a,160);
   line(75+90*a,190,105+90*a,190);
   line(95+90*a,20,175+90*a,20);
-  //segunda
+   //segunda
   a=1;
   line(85+90*a,20,85+90*a,150);
   line(85+90*a,150,75+90*a,150);
@@ -325,7 +370,8 @@ function draw() {
   line(96,y1+40,106,y1+50);
   line(106,y1+50,164,y1+50);
   line(164,y1+50,174,y1+40);
-  noFill();
+  //noFill();
+  fill('gray');
   rect(125,140+(y1-25)*50/70,20,20);
   line(127.5,y1+50,127.5,140+(y1-25)*50/70);
   line(142.5,y1+50,142.5,140+(y1-25)*50/70);
@@ -343,7 +389,8 @@ function draw() {
   line(96+90,y2+40,106+90,y2+50);
   line(106+90,y2+50,164+90,y2+50);
   line(164+90,y2+50,174+90,y2+40);
-  noFill();
+  //noFill();
+  fill('gray');
   rect(125+90,140+(y2-25)*50/70,20,20);
   line(127.5+90,y2+50,127.5+90,140+(y2-25)*50/70);
   line(142.5+90,y2+50,142.5+90,140+(y2-25)*50/70);
@@ -361,7 +408,8 @@ function draw() {
   line(96+90*2,y2+40,106+90*2,y2+50);
   line(106+90*2,y2+50,164+90*2,y2+50);
   line(164+90*2,y2+50,174+90*2,y2+40);
-  noFill();
+  //noFill();
+  fill('gray');
   rect(125+90*2,140+(y2-25)*50/70,20,20);
   line(127.5+90*2,y2+50,127.5+90*2,140+(y2-25)*50/70);
   line(142.5+90*2,y2+50,142.5+90*2,140+(y2-25)*50/70);
@@ -379,12 +427,15 @@ function draw() {
   line(96+90*3,y1+40,106+90*3,y1+50);
   line(106+90*3,y1+50,164+90*3,y1+50);
   line(164+90*3,y1+50,174+90*3,y1+40);
-  noFill();
+  //noFill();
+  fill('gray');
   rect(125+90*3,140+(y1-25)*50/70,20,20);
   line(127.5+90*3,y1+50,127.5+90*3,140+(y1-25)*50/70);
   line(142.5+90*3,y1+50,142.5+90*3,140+(y1-25)*50/70);
   rect(105+90*3,130+(y1-25)*35/70,20,55);
   rect(145+90*3,130+(y1-25)*35/70,20,55);  
+  noFill();
+ 
   y1=y1+m;
   y2=y2-m
   if(y1>=95){
@@ -420,18 +471,19 @@ function draw() {
     pop();
   }
   //CARCASA DEL MOTOR--------------------------------------------------------
-  rect(75,20,390,300);
-  rect(85,20,370,-40);
-  rect(85,20,10,-30);
-  arc(85,-10,20,20,1.5*PI,0);
-  rect(175,20,10,-20);
-  arc(180,0,10,10,PI,0);
-  rect(265,20,10,-20);
-  arc(270,0,10,10,PI,0);
-  rect(355,20,10,-20);
-  arc(360,0,10,10,PI,0);
-  rect(445,20,10,-30);
-  arc(455,-10,20,20,PI,1.5*PI);
+  
+  //rect(75,20,390,300);
+  //rect(85,20,370,-40);
+  //rect(85,20,10,-30);
+  //arc(85,-10,20,20,1.5*PI,0);
+  //rect(175,20,10,-20);
+  //arc(180,0,10,10,PI,0);
+  //rect(265,20,10,-20);
+  //arc(270,0,10,10,PI,0);
+  //rect(355,20,10,-20);
+  //arc(360,0,10,10,PI,0);
+  //rect(445,20,10,-30);
+  //arc(455,-10,20,20,PI,1.5*PI);
   
   //SISTEMA DE REFRIGERACIÓN------------------------------------------------------------
   fill(130,238,238);
@@ -463,26 +515,17 @@ function draw() {
   arc(610,455,20,20,0,0.5*PI);
   rect(610,455,10,-20);
   //rect(545,295,10,-15);
-  fill('white');
+  fill(180,152,222);
   ellipse(315,300,35,35);
   line(315-17.5,300,315,300-17.5);
   line(315-17.5,300,315,300+17.5);
-  //fill('blue');
-  //rect(580,240,10,55);
-  //arc(590,240,20,20,1*PI,1.5*PI);
-  //rect(590,240,50,-10);
-  //arc(590,295,20,20,0.5*PI,1*PI);
-  //rect(590,295,50,10);
+  
   fill('black');
   text('SALIDA DE AGUA',700,220);
-  //text('INGRESO DE AGUA',700,305);
-  //fill('red');
-  //rect(500,250,100,30);
-  //arc(500,265,30,30,0.5*PI,1.5*PI);
-  //arc(600,265,30,30,1.5*PI,0.5*PI);
-  //rect(560,248,10,34);
+  
   //DINAMOMETRO----------------------------------------------
   noFill();
+  fill('brown');
   rect(465,160,60,30);
   rect(525,120,50,110);
   rect(535,120,30,-50);
@@ -520,14 +563,14 @@ function draw() {
   text('INGRESO DE AGUA',700,150);
   //TUBERIAS-----------------------------------------------------
   //AIRE
-  fill('grey');
+  fill('yellow');
   rect(8,-420,4,25);
   rect(8,-385,4,25);
   //line(10,-410,10,-395);
-  fill('white');
+  fill('yellow');
   rect(-0,-400,-120,20);
   rect(20,-400,140,20);
-  
+fill('yellow');
   arc(160,-380,40,40,1.5*PI,0);
   rect(160,-380,20,50);
   rect(160,-130,20,110);
@@ -548,7 +591,8 @@ function draw() {
   //Enfriador----------------------------------------------
   push();
   translate(450,550);
-  noFill();
+  //noFill();
+  fill('orange');
   rect(140,-105,130,-150);
   fill(130,238,238);
   rect(240,-255,10,130);
@@ -585,7 +629,7 @@ function draw() {
   //TANQUE PULMON----------------------------------------
   fill('blue');
   rect(110,-410,110,200);
-  fill('white');
+  fill('yellow');
   rect(160,-210,20,30);
   //VALVULA MARIPOSA--------------------------------
   fill('black');
@@ -616,18 +660,8 @@ function draw() {
   rect(-130,-90,60,-10);
   //TERMOPARES-------------------------------------------
   fill('grey');
-  //rect(175,-570,5,15); //T2
-  //rect(180,-565,10,5);
-  //rect(175,-475,5,15); //p2
-  //rect(180,-470,10,5);
-  //rect(240,-300,-5,15); //p3 y t3
-  //rect(235,-295,-10,5);
   rect(180,-90,5,15); //t4
   rect(185,-85,10,5);
-  //rect(350+90,-100,5,15); //p5 y t5
-  //rect(355+90,-95,10,5);
-  //rect(440,-580,5,15); //p6 y t6
-  //rect(445,-575,10,5);
   rect(420,-250,-5,15);
   rect(415,-245,-10,5);
 
@@ -641,39 +675,20 @@ function draw() {
   textStyle(BOLD);
   textSize(14);
   text('VELOCIDAD DE GIRO', 615 , -280);
-  //text('REFRIGERANTE', -50 , 215);
-  //text('CARGA DEL DINAMÓMETRO', 615 , -250);
+  
   pop();
+ 
   //INDICADORES--------------------------
   //Ingreso
   indicador(-190,-350,'HR',hr,'%');
-  indicador(-190,-310,'Po',p1,'kPa');
-  indicador(-190,-270,'Ta',t1,'°C');
-  //Punto 2
-  //indicador(200,-575,'T2',t2,'°C');
-  //indicador(200,-480,'P2',p2,'kPa');
-  //Punto 3
-  //indicador(-70,-300,'T3',t3,'°C');
-  //indicador(80,-300,'P3',p3,'kPa');
-  //Punto 4
-  indicador(200,-100,'T4',t4,'°C');
-  indicador(200,-60,'P4',p4,'kPa');
-  //Punto 5
-  //indicador(370+90,-100,'T5',t5,'°C');
-  //indicador(370+90,-60,'P5',p5,'kPa');
-  //Punto 6
-  //indicador(460,-590,'T6',t6,'°C');
-  //indicador(460,-550,'P6',p6,'kPa');
-  //torque
+  indicador(-190,-310,'po',p1,'kPa');
+  indicador(-190,-270,'To',t1,'°C');
+  indicador(220,-60,'Tad',t4,'°C');
+  indicador(220,-100,'pad',p4,'kPa');
   indicador(650,40,'T',torque,'N.m');
   //flujo de combustible
   indicador(-60,10,'mc',flow_d,'kg/h');
-  //velocidad de giro
-  //indicador(-120,155,'n',vel_rpm,'RPM');
-  indicador(260,-320,'CO',co,'%');
-  indicador(260,-280,'co2',co2,'%');
-  indicador(260,-240,'O2',o2,'%');
-  indicador(260,-200,'HC',h_c,'ppm');
+  indicador(260,-250,'Tg',h_c,'°C');
   push();
 	fill('black');
 	rect(-120, 155, 30, 30);
@@ -685,19 +700,19 @@ function draw() {
 	text(nf(vel_rpm,0,2),-120+70,155+20);
 	text('RPM',-120+115,155+20);
   pop();
+  
   //PRESION DIFERENCIAL
   indicador(-50,-310,'dP',dp,'Pa');
-  //refrigerante salida al motor
-  //indicador(-120,230,'To',t_out,'°C');
-  //refrigerante ingreso al motor
-  //indicador(-120,270,'Ti',t_in,'°C');
-  //flujo de refrigerante ingreso al motor
-  //indicador(-120,310,'Vr',flow_ref,'m3/h');
-  indicador(550,-350,'Φ',inyec,'°');
+  
+ //Factor de carga
+  indicador(550,-350,'FC',inyec,'%');
+  //indicador(550,-415,'pad',-presion,'kPa');
+  indicador(-120,-200,'ENS',ensayo,'');
   pop();
 }
 function mousePressed() {
   // Did I click on slider?
+  
   if (dist(mouseX, mouseY, x, y) < r) {
     dragging = true;
     // If so, keep track of relative location of click to corner of rectangle
