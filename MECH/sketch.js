@@ -112,7 +112,7 @@ function draw() {
      //p4 = -0.0559*pow(presion,2) + 1.6768*presion +125.72;
      // }else {
     torque = -0.008*vel_rpm + 62.667;
-	dp = -4*pow(vel_rpm,2)/pow(10,6) + 0.096*vel_rpm - 7;
+	dp =  + 0.035*vel_rpm + 1.1667;
 	p4 = 2*pow(vel_rpm,2)/pow(10,7) - 0.0095*vel_rpm + 5.1375;
 	t4 = 5*pow(vel_rpm,2)/pow(10,7) + 0.00*vel_rpm + 14.425;
 	flow_d = -3600*pow(vel_rpm,2)/pow(10,10) + 0.000001*vel_rpm*3600 - 0.0006*3600;
@@ -124,17 +124,17 @@ function draw() {
         
   }else if(inyec == 75){
 	torque = -0.0105*vel_rpm + 88.417;
-	dp = -0.057*vel_rpm + 174;
+	dp = 2*pow(vel_rpm,2)/pow(10,5) - 0.057*vel_rpm +174;
 	p4 = 3*pow(vel_rpm,2)/pow(10,6) - 0.0253*vel_rpm + 14.62;
 	t4 = -2*pow(vel_rpm,2)/pow(10,7) + 0.0023*vel_rpm + 34.8;
 	flow_d = -4*pow(vel_rpm,2)*3600/pow(10,11) + 0.0000007*3600*vel_rpm - 3600*0.0003;
 	co = 2*pow(vel_rpm,2)/pow(10,8) - 7*vel_rpm/pow(10,5) + 0.1545;
-	co2 = -4*pow(vel_rpm,2)*3600/pow(10,8) + 0.0009*vel_rpm*3600 + 3600*11.346;
+	co2 = -4*pow(vel_rpm,2)*3600/pow(10,8) +0.0009*vel_rpm*3600 + 3600*11.346;
 	o2 = -9*pow(vel_rpm,2)/pow(10,8) - 0.0003*vel_rpm + 4.5184;
 	h_c = 1300*pow(vel_rpm,-0.076);
   }else {
  	torque =  -3*pow(vel_rpm,2)/pow(10,6) + 0.0087*vel_rpm + 81.625;
-	dp = -0.057*vel_rpm +174;
+	dp = -4*pow(vel_rpm,2)/pow(10,6) + 0.096*vel_rpm -7;
 	p4 = 3*pow(vel_rpm,2)/pow(10,6) - 0.0253*vel_rpm + 14.62;
 	t4 = -5*pow(vel_rpm,2)/pow(10,7) + 0.0069*vel_rpm +14.425;
 	flow_d = 0.0008*log(vel_rpm)*3600-0.0051*3600;
@@ -150,7 +150,7 @@ function draw() {
     dp= 0.3031*pow(presion,2) - 22.245*presion + 492.59;
     p4=-presion;
     t4=61.946*exp(-1*0.0364*presion);
-    flow_d = 3600*0.0009*exp(-0.034*presion);
+    flow_d = -0.0133*pow(presion,2) + 0.9807*presion -8.5918;
     h_c=0.7392*pow(presion,2) - 53.128*presion + 1388.7;
   }  
     
