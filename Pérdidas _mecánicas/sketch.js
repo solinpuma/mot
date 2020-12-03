@@ -83,23 +83,24 @@ velocidad = slider.value();
     momento = slider.value(); 
     FC=1800;    
     if(momento == 1){
-      torque = 180;
-      dp =380 ;
-      p2=101;
-      p3 = 0.189;
-      p4=p3-0.01*momento
-      p5 = 2.309;
-      p6 = -0.0045;
-      t2 = 20.18;
-      t3 = 43.17;
-      t4= 37.4;
-      t5 = 312.4;
-      t6 = 276;
+      torque = 40;
+      dp = 386;
+      p2=101
+      p3 = 0.167;
+      p4=p3-0.01*momento;
+      p5 = 2.969;
+     
+      p6 = -0.0036;
+      t2 = 20.6;
+      t3 = 43.86;
+      t4= 39.23
+      t5 = 217.66;
+      t6 = 198.63;
       
-      t_in = 65.7;
-      t_out = 68.9;
-      flow_ref=6.5;
-      flow_d = 6.767; 
+      t_in = 64.45;
+      t_out = 66.4;
+      flow_ref=8;
+      flow_d = 4.5; 
    }else if(momento == 2){
    
      torque = 65;
