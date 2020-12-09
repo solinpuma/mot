@@ -33,8 +33,8 @@ let torque;
 let torque_max = 350;
 
 //VALORES----------------------------------
-let hr = 80.0;
-let t1 = 25.0;
+let hr = 85.0;
+let t1 = 15.0;
 let t2 = 0.0;
 let t3 = 0.0;
 let t4 = 0.0;
@@ -66,41 +66,41 @@ function setup() {
   slider.style('width', '100px'); 
   velocidad = slider.value();
   
-  slider = createSlider(1,8,1,1);
-  slider.position(x_mot+665, y_mot+15);
-  slider.style('width', '100px'); 
-  momento = slider.value();
+  slider2 = createSlider(1,8,1,1);
+  slider2.position(x_mot+665, y_mot+15);
+  slider2.style('width', '100px'); 
+  momento = slider2.value();
 }
 
 function draw() {
 
   background(220);
 velocidad = slider.value();
-//momento = slider.value(); 
+momento = slider2.value(); 
  
   if(velocidad == 1){ 
    
-    momento = slider.value(); 
-    FC=1800;    
+   // momento = slider.value(); 
+    FC=1400;    
     if(momento == 1){
       torque = 40;
-      dp = 386;
+      dp = 278;
       p2=101
-      p3 = 0.167;
+      p3 = 0.087;
       p4=p3-0.01*momento;
-      p5 = 2.969;
+      p5 = 1.684;
      
-      p6 = -0.0036;
-      t2 = 20.6;
+      p6 = -0.0054*100;
+      t2 = 18.71;
       t3 = 43.86;
-      t4= 39.23
-      t5 = 217.66;
-      t6 = 198.63;
+      t4= 35.45
+      t5 = 180.51;
+      t6 = 167.32;
       
-      t_in = 64.45;
-      t_out = 66.4;
-      flow_ref=8;
-      flow_d = 4.5; 
+      t_in = 66.91;
+      t_out = 67.81;
+      flow_ref=6.5;
+      flow_d = 3.085; 
    }else if(momento == 2){
    
      torque = 65;
@@ -108,8 +108,8 @@ velocidad = slider.value();
       p2=101;
       p3 = 0.095;
       p4=p3-0.01*momento;
-      p5 = 1.684;
-      p6 = -0.0054;
+      p5 = 1.73;
+      p6 = -0.0054*100;
       t2 = 18.6;
       t3 = 33.54;
       t4= 33.19
@@ -128,7 +128,7 @@ velocidad = slider.value();
       p3 = 0.106;
       p4=p3-0.01*momento;
       p5 = 1.794;
-      p6 = -0.0052;
+      p6 = -0.0052*100;
       t2 = 18.61;
       t3 = 34.41;
       t4= 32.48
@@ -147,7 +147,7 @@ velocidad = slider.value();
       p3 = 0.12;
       p4=p3-0.01*momento;
       p5 = 1.881;
-      p6 = -0.005;
+      p6 = -0.005*100;
       t2 = 19.15;
       t3 = 35.67;
       t4= 32.66
@@ -166,7 +166,7 @@ velocidad = slider.value();
       p3 = 0.134;
       p4=p3-0.01*momento;
       p5 = 1.933;
-      p6 = -0.0049;
+      p6 = -0.0049*100;
       t2 = 19.22;
       t3 = 37.1;
       t4= 33.35;
@@ -185,7 +185,7 @@ velocidad = slider.value();
       p3 = 0.149;
       p4=p3-0.01*momento;
       p5 = 2.06;
-      p6 = -0.0047;
+      p6 = -0.0047*100;
       t2 = 19.75;
       t3 = 38.97;
       t4= 34.49;
@@ -204,7 +204,7 @@ velocidad = slider.value();
       p3 = 0.168;
       p4=p3-0.01*momento
       p5 = 2.159;
-      p6 = -0.0045;
+      p6 = -0.0045*100;
       t2 = 19.94;
       t3 = 40.96;
       t4= 35.86;
@@ -224,7 +224,7 @@ velocidad = slider.value();
       p3 = 0.189;
       p4=p3-0.01*momento
       p5 = 2.309;
-      p6 = -0.0045;
+      p6 = -0.0045*100;
       t2 = 20.18;
       t3 = 43.17;
       t4= 37.4;
@@ -240,8 +240,8 @@ velocidad = slider.value();
     
  }else {
 
- momento = slider.value(); 
-  
+ //momento = slider.value(); 
+  FC=1800;
    if(momento == 1){
       torque = 40;
       dp = 386;
@@ -250,7 +250,7 @@ velocidad = slider.value();
       p4=p3-0.01*momento;
       p5 = 2.969;
      
-      p6 = -0.0036;
+      p6 = -0.0036*100;
       t2 = 20.6;
       t3 = 43.86;
       t4= 39.23
@@ -269,7 +269,7 @@ velocidad = slider.value();
       p3 = 0.189;
       p4=p3-0.01*momento
       p5 = 3.067;
-      p6 = -0.0036;
+      p6 = -0.0036*100;
       t2 = 20.61;
       t3 = 45.11;
       t4= 40.26;
@@ -288,7 +288,7 @@ velocidad = slider.value();
       p3 = 0.209;
       p4=p3-0.01*momento
       p5 = 3.194;
-      p6 = -0.0036;
+      p6 = -0.0036*100;
       t2 = 21.48;
       t3 = 47.68;
       t4= 41.91
@@ -307,7 +307,7 @@ velocidad = slider.value();
       p3 = 0.231;
       p4=p3-0.01*momento
       p5 = 3.385;
-      p6 = -0.0031;
+      p6 = -0.0031*100;
       t2 = 22.06;
       t3 = 50.05;
       t4= 43.39;
@@ -326,7 +326,7 @@ velocidad = slider.value();
       p3 = 0.26;
       p4=p3-0.01*momento
       p5 = 3.553;
-      p6 = -0.0031;
+      p6 = -0.0031*100;
       t2 = 22.77;
       t3 = 52.97;
       t4= 45.59;
@@ -345,7 +345,7 @@ velocidad = slider.value();
       p3 = 0.291;
       p4=p3-0.01*momento
       p5 = 3.762;
-      p6 = -0.003;
+      p6 = -0.003*100;
       t2 = 23.01;
       t3 = 56.19;
       t4= 48.04;
@@ -364,7 +364,7 @@ velocidad = slider.value();
       p3 = 0.322;
       p4=p3-0.01*momento
       p5 = 4;
-      p6 = -0.0024;
+      p6 = -0.0024*100;
       t2 = 23.48;
       t3 = 59.5;
       t4= 50.86;
@@ -384,7 +384,7 @@ velocidad = slider.value();
       p3 = 0.347;
       p4=p3-0.01*momento
       p5 = 4.392;
-      p6 = -0.0021;
+      p6 = -0.0021*100;
       t2 = 23.68;
       t3 = 64.44;
       t4= 54.64;
@@ -855,13 +855,13 @@ velocidad = slider.value();
   indicador(200,-480,'P2',p2,'kPa');
   //Punto 3
   indicador(-70,-300,'T3',t3,'°C');
-  indicador(80,-300,'P3',p3,'kPa');
+  indicador(80,-300,'P3',p3,'bar');
   //Punto 4
   indicador(190,-100,'T4',t4,'°C');
-  indicador(190,-60,'P4',p4,'kPa');
+  indicador(190,-60,'P4',p4,'bar');
   //Punto 5
   indicador(370,-100,'T5',t5,'°C');
-  indicador(370,-60,'P5',p5,'kPa');
+  indicador(370,-60,'P5',p5,'bar');
   //Punto 6
   indicador(460,-590,'T6',t6,'°C');
   indicador(460,-550,'P6',p6,'kPa');
@@ -878,9 +878,9 @@ velocidad = slider.value();
 	fill(0, 255, 0);
     textSize(14);
     textStyle(BOLD);
-	text('n', -120+15, 155+20); 
-	text(nf(vel_rpm,0,2),-120+70,155+20);
-	text('RPM',-120+115,155+20);
+	//text('n', -120+15, 155+20); 
+	//text(nf(vel_rpm,0,2),-120+70,155+20);
+	//text('RPM',-120+115,155+20);
   pop();
   //PRESION DIFERENCIAL
   indicador(-50,-510,'dP',dp,'Pa');
@@ -890,7 +890,7 @@ velocidad = slider.value();
   indicador(-120,270,'Ti',t_in,'°C');
   //flujo de refrigerante ingreso al motor
   indicador(-120,310,'Vr',flow_ref,'m3/h');
-  indicador(525,-200,'N',FC,'%');
+  indicador(525,-200,'N',FC,'rpm');
   pop();
 }
 function mousePressed() {
