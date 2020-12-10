@@ -372,7 +372,7 @@ momento = slider2.value();
       t6 = 299.95;
     
       t_in = 64.14;
-      t_out = 37.2;
+      t_out = 67.2;
       flow_ref=8;
       flow_d = 8.754; 
              
